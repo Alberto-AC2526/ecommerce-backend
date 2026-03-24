@@ -18,7 +18,15 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: ["http://localhost:8080", "vue-js-ecommerce.vercel.app"],
+      // ¡AQUÍ ESTÁ LA MAGIA! Añadimos https://
+      origin: [
+        "http://localhost:8080",
+        "http://localhost:5173",
+        "https://vue-js-ecommerce.vercel.app",
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      keepHeaderOnError: true,
     },
   },
   "strapi::poweredBy",
